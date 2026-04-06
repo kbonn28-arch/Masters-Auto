@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, MapPin, Clock, Send } from 'lucide-react';
 
 const QuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -26,30 +26,42 @@ const QuoteForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+    setSubmitStatus('');
+
     try {
-      // In production, this would send to your backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        vehicleSize: '',
-        serviceType: '',
-        preferredDate: '',
-        message: ''
+      const response = await fetch('https://masters-auto.onrender.com/api/quotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          vehicleSize: '',
+          serviceType: '',
+          preferredDate: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     }
-    
+
     setIsSubmitting(false);
-    
-    // Reset status after 5 seconds
-    setTimeout(() => setSubmitStatus(''), 5000);
+
+    setTimeout(() => {
+      setSubmitStatus('');
+    }, 5000);
   };
 
   const contactInfo = [
@@ -87,12 +99,11 @@ const QuoteForm = () => {
             Get Your <span className="text-red-500">Free Quote</span>
           </h2>
           <p className="text-xl text-gray-300">
-            Send your service request and we'll get back to you with a detailed quote.
+            Send your service request and we&apos;ll get back to you with a detailed quote.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -101,7 +112,7 @@ const QuoteForm = () => {
           >
             <div className="card">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              
+
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -151,7 +162,6 @@ const QuoteForm = () => {
             </div>
           </motion.div>
 
-          {/* Quote Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -159,14 +169,14 @@ const QuoteForm = () => {
           >
             <div className="card">
               <h3 className="text-2xl font-bold mb-6">Service Request Form</h3>
-              
+
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mb-6 p-4 bg-green-900/20 border border-green-800 rounded-lg text-green-400"
                 >
-                  Thank you! Your quote request has been submitted successfully. We'll contact you soon.
+                  Thank you! Your quote request has been submitted successfully. We&apos;ll contact you soon.
                 </motion.div>
               )}
 
