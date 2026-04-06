@@ -1,0 +1,75 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --color-red: 220, 38, 38;
+    --color-red-dark: 153, 27, 27;
+    --color-black: 0, 0, 0;
+    --color-gray: 31, 41, 55;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 font-sans text-white bg-black leading-relaxed;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply mt-0 font-bold;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  img {
+    @apply max-w-full block;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 border-none rounded-full px-4 py-3 font-bold cursor-pointer bg-red-600 text-white transition-all hover:bg-red-700 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border-none rounded-full px-4 py-3 font-bold cursor-pointer bg-transparent text-white border border-white/30 transition-all hover:bg-white hover:text-black;
+  }
+
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-xl;
+  }
+
+  .container {
+    @apply w-full max-w-6xl mx-auto px-4;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .section-alt {
+    @apply bg-gray-950;
+  }
+
+  .eyebrow {
+    @apply uppercase tracking-wider text-sm font-bold text-red-400 mb-2;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}

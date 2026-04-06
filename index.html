@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master's Auto Detail | Chico, CA</title>
+  <meta name="description" content="Auto detailing, ceramic coatings, maintenance club, and easy online quotes in Chico, CA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #0f0f10;
+      --card: #121214;
+      --line: #1f1f23;
+      --muted: #c4c7ce;
+      --text: #f7f7fa;
+      --accent: #e11d2f;
+      --accent-dark: #b31323;
+      --accent-soft: rgba(225, 29, 47, 0.12);
+      --radius: 18px;
+      --shadow: 0 18px 48px rgba(0,0,0,0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Barlow', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1200px, calc(100% - 36px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+    .section-alt { background: var(--panel); }
+    .eyebrow { text-transform: uppercase; letter-spacing: 1.4px; font-size: 0.82rem; font-weight: 800; color: #f87171; margin-bottom: 10px; }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.6rem); line-height: 1.02; }
+    h2 { font-size: clamp(1.9rem, 3vw, 3rem); margin-bottom: 14px; }
+    h3 { font-size: 1.35rem; }
+    .muted { color: var(--muted); }
+    .pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 999px; background: var(--accent-soft); color: #fca5a5; font-weight: 800; font-size: 0.9rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 20px; border-radius: 999px; border: 1px solid transparent; font-weight: 800; cursor: pointer; background: var(--accent); color: #fff; transition: transform 120ms ease, box-shadow 120ms ease; text-decoration: none; }
+    .btn:hover { background: var(--accent-dark); box-shadow: 0 10px 28px rgba(225,29,47,0.35); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+    .btn-secondary { background: #ffffff; color: #0f0f10; font-weight: 800; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+    .grid-2 { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .section-head p { max-width: 660px; }
+    ul.list-check { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+    ul.list-check li { position: relative; padding-left: 22px; color: var(--muted); }
+    ul.list-check li::before { content: '✔'; position: absolute; left: 0; color: #22c55e; font-weight: 900; }
+    .list-x li::before { content: '✕'; color: #f87171; }
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(5,5,5,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: 0.4px; }
+    .brand-mark { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, #e11d2f, #7f1d1d); display: grid; place-items: center; font-weight: 900; }
+    .nav-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .nav-links a { font-weight: 700; color: #f3f4f6; font-size: 0.98rem; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
+    .call-link { font-weight: 800; color: #fff; }
+    .menu-toggle { display: none; background: var(--card); border: 1px solid var(--line); color: #fff; padding: 12px 14px; border-radius: 14px; font-size: 1.05rem; }
+    .mobile-menu { display: none; padding: 0 0 16px; }
+    .mobile-menu.open { display: grid; gap: 10px; }
+    .mobile-menu a { padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); font-weight: 700; }
+
+    .promo { background: linear-gradient(90deg, rgba(225,29,47,0.9), rgba(76,29,149,0.8)); color: #fff; text-align: center; padding: 11px 10px; font-weight: 800; letter-spacing: 0.3px; }
+    .hero { position: relative; overflow: hidden; background: radial-gradient(circle at 18% 20%, rgba(225,29,47,0.12), transparent 24%), linear-gradient(135deg, #111013 0%, #050505 60%); }
+    .hero::after { content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=80') center/cover; opacity: 0.16; mix-blend-mode: screen; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 26px; padding: 96px 0 88px; align-items: center; }
+    .hero-card { background: rgba(18,18,20,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; backdrop-filter: blur(8px); }
+    .quick-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 18px; }
+    .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; text-align: center; }
+    .stat h3 { margin-bottom: 4px; }
+
+    .toggle-row { display: inline-flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px; }
+    .toggle-row button { background: none; border: none; color: #fff; font-weight: 800; padding: 9px 14px; border-radius: 999px; cursor: pointer; }
+    .toggle-row button.active { background: var(--accent); }
+
+    .package-table { width: 100%; border-collapse: collapse; min-width: 820px; }
+    .package-table th, .package-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+    .package-table th { background: #0c0c0e; font-size: 0.96rem; letter-spacing: 0.2px; }
+    .package-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(34,197,94,0.18); color: #4ade80; padding: 6px 10px; border-radius: 999px; font-weight: 800; font-size: 0.86rem; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .gallery figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+    .gallery figcaption { padding: 12px 14px; font-weight: 700; }
+
+    .slider-wrap { position: relative; max-width: 940px; margin: 0 auto; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .slider-wrap img { width: 100%; display: block; object-fit: cover; height: 520px; }
+    .slider-overlay { position: absolute; inset: 0; overflow: hidden; }
+    .slider-overlay img { width: 100%; height: 520px; object-fit: cover; }
+    .slider-control { position: absolute; left: 0; right: 0; bottom: 16px; display: flex; justify-content: center; }
+    .slider-control input { width: 60%; }
+    .slider-handle { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; box-shadow: 0 0 0 3px rgba(225,29,47,0.8); pointer-events: none; }
+
+    form { display: grid; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    label { display: grid; gap: 6px; font-weight: 700; font-size: 0.97rem; }
+    input, select, textarea { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: #ffffff; color: #0f0f10; font: inherit; }
+    textarea { min-height: 120px; }
+    .contact-card { display: grid; gap: 10px; }
+    .contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .contact-list li { padding: 12px 14px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+
+    .faq { display: grid; gap: 12px; }
+    .faq details { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--panel); }
+    .faq summary { cursor: pointer; font-weight: 800; }
+
+    .maintenance { display: grid; gap: 16px; grid-template-columns: 1.1fr 0.9fr; }
+    .plan { border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: var(--card); }
+    .plan h3 { margin-bottom: 6px; }
+    .plan ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+
+    .map { border: 0; width: 100%; height: 320px; border-radius: 14px; }
+    footer { background: #0c0c0e; color: #d1d5db; padding: 52px 0 32px; margin-top: 20px; }
+    footer h3, footer h4 { color: #fff; }
+    .footer-grid { display: grid; gap: 20px; grid-template-columns: 1.2fr 0.9fr 0.9fr; }
+    .footer-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .copyright { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.12); color: #9ca3af; font-size: 0.93rem; }
+
+    @media (max-width: 1040px) {
+      .grid-2, .grid-3, .grid-4, .maintenance, .hero-inner, .section-head, .footer-grid { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; }
+    }
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .hero-inner { padding: 78px 0 72px; }
+      .slider-wrap img, .slider-overlay img { height: 360px; }
+      .slider-handle { box-shadow: 0 0 0 2px rgba(225,29,47,0.8); }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .package-table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="promo">New maintenance club signups receive a complimentary +1 year ceramic upgrade. Call today!</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-mark">M</span>
+        <span>Master's Auto Detail</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#packages">Packages</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#maintenance">Maintenance Club</a>
+        <a href="#quote">Quote</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="call-link" href="tel:5303212936">(530) 321-2936</a>
+        <a class="btn btn-secondary" href="#quote">Request Quote</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰ Menu</button>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#packages">Packages</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#maintenance">Maintenance Club</a>
+      <a href="#quote">Quote</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:5303212936">Call: (530) 321-2936</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div>
+          <div class="pill">Auto detailing in Chico, CA</div>
+          <h1>Showroom feeling. Every time.</h1>
+          <p class="muted" style="max-width: 640px; font-size: 1.08rem;">Paint correction, ceramic coatings, and interior resets built for car people. Pick your package, toggle your vehicle size, and request a quote in under a minute.</p>
+          <div style="display:flex; gap: 12px; flex-wrap: wrap; margin-top: 22px;">
+            <a class="btn" href="tel:5303212936">Call Now</a>
+            <a class="btn btn-ghost" href="#quote">Request a Quote</a>
+            <a class="btn btn-ghost" href="#maintenance">Join Maintenance Club</a>
+          </div>
+          <div class="quick-grid">
+            <div class="stat">
+              <h3>15+ Years</h3>
+              <p class="muted">Serving Chico drivers with paint protection & detail.</p>
+            </div>
+            <div class="stat">
+              <h3>Same-Day Responses</h3>
+              <p class="muted">Online requests go straight to the owner.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="eyebrow">Fast quote</div>
+          <h3>Tell us about your vehicle</h3>
+          <p class="muted">Choose your size and package. We’ll confirm by phone.</p>
+          <div id="sizeChips" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;"></div>
+          <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="badge">Click-to-call ready</span>
+            <span class="badge" style="background: rgba(59,130,246,0.16); color: #93c5fd;">Mobile friendly</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Package comparison</div>
+            <h2>Pick the coverage that fits how you drive</h2>
+          </div>
+          <div>
+            <div class="toggle-row" id="sizeToggle"></div>
+            <p class="muted" style="margin-top:8px;">Pricing updates instantly when you choose Sedan, SUV, or Truck/XL.</p>
+          </div>
+        </div>
+        <div class="panel" style="overflow-x:auto;">
+          <table class="package-table" id="packageTable"></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Detailing pricing</div>
+            <h2>Transparent starting prices by vehicle size</h2>
+          </div>
+          <p class="muted">No surprises. If condition requires extra correction, we’ll discuss before we start.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Basic Detail + Wax</h3>
+            <p class="muted">Hand wash, wheels, trim dressing, interior wipe down, vacuum, windows, and premium wax protection.</p>
+            <div class="panel" id="basicPricing"></div>
+          </div>
+          <div class="card">
+            <h3>Full Detail</h3>
+            <p class="muted">Jamb wash, clay bar, single-stage polish to reduce swirls, sealant or ceramic upgrade, interior reset.</p>
+            <div class="panel" id="fullPricing"></div>
+            <p class="muted" style="margin-top:10px;">*Prices may vary based on vehicle condition.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 18px;">
+          <h3>Individual Add-ons (with Full Detail)</h3>
+          <div class="grid-3" id="addOns"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Proof of work</div>
+            <h2>Before & after from the bay</h2>
+          </div>
+          <p class="muted">Pulled from our Instagram highlights. Slide to see correction results.</p>
+        </div>
+        <div class="slider-wrap">
+          <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80" alt="After detail" loading="lazy">
+          <div class="slider-overlay" id="sliderOverlay">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=80" alt="Before detail" loading="lazy">
+          </div>
+          <div class="slider-handle" id="sliderHandle"></div>
+          <div class="slider-control"><input type="range" id="sliderRange" min="0" max="100" value="50" aria-label="Before and after slider"></div>
+        </div>
+        <div class="gallery" style="margin-top: 18px;" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="maintenance">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Maintenance Club</div>
+            <h2>Keep it dialed all year</h2>
+          </div>
+          <p class="muted">Recurring cleanups with member-only perks and ceramic upgrade offers.</p>
+        </div>
+        <div class="maintenance">
+          <div class="card">
+            <h3>How it works</h3>
+            <ul class="list-check">
+              <li>Monthly billing, cancel anytime.</li>
+              <li>Pick the cadence that matches how you drive.</li>
+              <li>Members get +1 year ceramic upgrade bonus this month.</li>
+            </ul>
+            <div class="grid-2" style="margin-top:16px;" id="plans"></div>
+          </div>
+          <div class="card">
+            <h3>Join the club</h3>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+              <label>Full Name<input type="text" name="name" required></label>
+              <label>Phone<input type="tel" name="phone" required></label>
+              <label>Email<input type="email" name="email" required></label>
+              <label>Vehicle Size<select name="size" required>
+                <option value="">Select size</option>
+                <option>Sedan / Coupe</option>
+                <option>SUV / Wagon</option>
+                <option>Truck / XL SUV / Van</option>
+              </select></label>
+              <label>Preferred cadence<select name="cadence" required>
+                <option value="Monthly">Monthly</option>
+                <option value="Every 6 weeks">Every 6 weeks</option>
+                <option value="Quarterly">Quarterly</option>
+              </select></label>
+              <button type="submit" class="btn">Start Membership</button>
+              <p class="muted" style="font-size:0.9rem;">You'll receive a confirmation email and we’ll call to lock in your first visit.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quote">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Request a quote</div>
+            <h2>Send your build sheet</h2>
+          </div>
+          <p class="muted">We respond the same business day. Calls are welcomed too.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card contact-card">
+            <div class="pill">Direct with the owner</div>
+            <h3>Master's Auto Detail</h3>
+            <ul class="contact-list" id="contactList"></ul>
+            <p class="muted">Drop off at the shop or request mobile availability within Chico.</p>
+            <iframe class="map" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.109932098855!2d-121.85967492358614!3d39.72330287156421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80915b067538009d%3A0x9d4ebcd3795cb5c7!2s636%20Nord%20Ave%20Ste%20A%2C%20Chico%2C%20CA%2095926!5e0!3m2!1sen!2sus!4v1700000000000"></iframe>
+          </div>
+          <div class="card">
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+              <div class="form-row">
+                <label>Full Name<input type="text" name="name" required></label>
+                <label>Phone<input type="tel" name="phone" required></label>
+              </div>
+              <div class="form-row">
+                <label>Email<input type="email" name="email" required></label>
+                <label>Vehicle Size<select name="vehicle_size" required>
+                  <option value="">Select size</option>
+                </select></label>
+              </div>
+              <div class="form-row">
+                <label>Service<select name="service" required>
+                  <option value="">Choose a service</option>
+                </select></label>
+                <label>Preferred Date<input type="date" name="preferred_date"></label>
+              </div>
+              <label>Vehicle / Service Notes<textarea name="message" placeholder="Ex: black F-150, needs pet hair removal and light swirl fix."></textarea></label>
+              <button type="submit" class="btn">Submit Request</button>
+              <p class="muted" style="font-size:0.9rem;">You'll get an email confirmation. We’ll call to finalize.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">FAQ</div>
+            <h2>Answers before you arrive</h2>
+          </div>
+          <p class="muted">Built from the most common phone questions.</p>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Visit or call</div>
+            <h2>We're ready when you are</h2>
+          </div>
+          <p class="muted">Friendly, direct, and built for car enthusiasts.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Call</h3>
+            <p class="muted">Click-to-call from mobile or dial directly.</p>
+            <a class="btn" href="tel:5303212936">Call (530) 321-2936</a>
+          </div>
+          <div class="card">
+            <h3>Shop Hours</h3>
+            <ul class="footer-list" id="hourList"></ul>
+          </div>
+          <div class="card">
+            <h3>Address</h3>
+            <p class="muted">636 Nord Ave Ste A, Chico, CA 95928</p>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=636+Nord+Ave+Ste+A,+Chico,+CA+95928">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Master's Auto Detail</h3>
+        <p>Professional auto detailing, paint correction, and ceramic coatings in Chico, CA. Built for people who love their cars.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-list">
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#maintenance">Maintenance Club</a></li>
+          <li><a href="#quote">Quote</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Business Hours</h4>
+        <ul class="footer-list" id="footerHours"></ul>
+      </div>
+    </div>
+    <div class="container copyright">Master's Auto Detail • Chico, CA</div>
+  </footer>
+
+  <script>
+    // One-stop content config for the owner. Update prices, descriptions, and FAQ here.
+    const siteData = {
+      contact: {
+        phone: '(530) 321-2936',
+        tel: '5303212936',
+        address: '636 Nord Ave Ste A, Chico, CA 95928',
+        email: 'detail@mastersautodetail.com'
+      },
+      hours: [
+        'Monday: 9AM - 5PM',
+        'Tuesday: 8AM - 6PM',
+        'Wednesday: 8AM - 6PM',
+        'Thursday: 8AM - 6PM',
+        'Friday: 8AM - 5PM',
+        'Sat/Sun: Closed'
+      ],
+      sizes: [
+        { id: 'sedan', label: 'Sedan / Coupe', note: 'Civic, Camry, Model 3' },
+        { id: 'suv', label: 'SUV / Wagon', note: 'Highlander, RAV4, Outback' },
+        { id: 'truck', label: 'Truck / XL SUV / Van', note: 'F-150, Silverado, Tahoe, Suburban' }
+      ],
+      packages: [
+        {
+          id: 'full',
+          name: 'Full Detail',
+          blurb: 'Interior + exterior reset with polish and sealant. Ceramic upgrade optional.',
+          price: { sedan: 359, suv: 449, truck: 539 },
+          features: [
+            { label: 'Hand wash & jambs', included: true },
+            { label: 'Clay bar decontamination', included: true },
+            { label: 'Single-stage polish', included: true },
+            { label: 'Sealant or ceramic upgrade', included: true },
+            { label: 'Interior wipe down & vacuum', included: true },
+            { label: 'Steam clean seats', included: false }
+          ]
+        },
+        {
+          id: 'ceramic',
+          name: 'Ceramic Protection',
+          blurb: 'Long-term gloss, hydrophobic finish, and UV defense.',
+          price: { sedan: 649, suv: 749, truck: 899 },
+          features: [
+            { label: 'Hand wash & jambs', included: true },
+            { label: 'Clay bar + paint prep', included: true },
+            { label: 'Machine polish for gloss', included: true },
+            { label: 'Multi-year ceramic coating', included: true },
+            { label: 'Wheel face coating', included: true },
+            { label: 'Interior detail', included: false }
+          ]
+        },
+        {
+          id: 'basic',
+          name: 'Basic Detail + Wax',
+          blurb: 'Exterior refresh with interior wipe down and premium wax.',
+          price: { sedan: 195, suv: 249, truck: 339 },
+          features: [
+            { label: 'Hand wash & wheels', included: true },
+            { label: 'Dress tires & trim', included: true },
+            { label: 'Interior surfaces wiped', included: true },
+            { label: 'Vacuum seats & carpets', included: true },
+            { label: 'Clay bar', included: false },
+            { label: 'Machine polish', included: false }
+          ]
+        }
+      ],
+      addOns: [
+        { name: 'Headlight Restoration', price: '$26+', desc: 'Restores clarity and adds UV protection.' },
+        { name: 'Spot Cleaning', price: '$35+', desc: 'Target stubborn stains quickly.' },
+        { name: 'Deep Shampoo', price: '$100+', desc: 'Extracts embedded dirt & odors.' },
+        { name: 'Engine Bay Detail', price: '$65+', desc: 'Degrease, dress plastics, tidy wiring.' },
+        { name: 'Pet Hair Removal', price: '$60+', desc: 'Heavy interior reset for pet owners.' },
+        { name: 'Odor Neutralizer', price: '$45+', desc: 'Enzyme treatment for lingering smells.' }
+      ],
+      maintenance: [
+        { name: 'Monthly', price: '$129', note: 'Best for daily drivers', perks: ['Interior refresh each visit', 'Exterior wash + sealant boost', '10% off ceramic coatings', 'Priority scheduling'] },
+        { name: 'Every 6 Weeks', price: '$149', note: 'For lighter use', perks: ['Interior wipe & vacuum', 'Exterior wash + spray sealant', 'Free headlight check', 'Member-only promos'] }
+      ],
+      gallery: [
+        { title: 'Paint correction • Charger', img: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80', link: 'https://www.instagram.com' },
+        { title: 'Interior reset • Tacoma', img: 'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80', link: 'https://www.instagram.com' },
+        { title: 'Ceramic coating • Model 3', img: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80', link: 'https://www.instagram.com' }
+      ],
+      faq: [
+        { q: 'How long do appointments take?', a: 'Basic Detail averages 2–3 hours. Full Detail and ceramic protection range from half-day to full-day based on vehicle size and paint condition.' },
+        { q: 'Do prices ever change from the starting rate?', a: 'If heavy pet hair, oxidation, or bio cleanup is needed we’ll review the vehicle first and confirm any adjustments before starting.' },
+        { q: 'Is ceramic coating worth it vs. wax?', a: 'Ceramic lasts years, resists chemicals and UV, and makes washing easier. Wax protects for months. We’ll help you pick based on how you use the vehicle.' },
+        { q: 'What counts as Extra Small now?', a: 'Extra Small is reserved for older 90s-era compacts like Miata or CRX. Most modern sedans start at “Sedan / Coupe.”' },
+        { q: 'Do you have mobile service?', a: 'Chico drop-off is preferred for best results. Limited mobile availability—ask when you book.' }
+      ]
+    };
+
+    const state = { size: 'sedan' };
+
+    const packageTable = document.getElementById('packageTable');
+    const sizeToggle = document.getElementById('sizeToggle');
+    const basicPricing = document.getElementById('basicPricing');
+    const fullPricing = document.getElementById('fullPricing');
+    const addOns = document.getElementById('addOns');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const sizeChips = document.getElementById('sizeChips');
+
+    function currency(n) { return `$${Number(n).toLocaleString('en-US')}`; }
+
+    function renderSizeToggle() {
+      sizeToggle.innerHTML = '';
+      siteData.sizes.forEach(size => {
+        const btn = document.createElement('button');
+        btn.textContent = size.label.split(' / ')[0];
+        btn.className = state.size === size.id ? 'active' : '';
+        btn.addEventListener('click', () => { state.size = size.id; renderPackages(); });
+        sizeToggle.appendChild(btn);
+      });
+    }
+
+    function renderSizeChips() {
+      sizeChips.innerHTML = '';
+      siteData.sizes.forEach(size => {
+        const chip = document.createElement('div');
+        chip.className = 'panel';
+        chip.style.padding = '12px 14px';
+        chip.style.borderRadius = '12px';
+        chip.innerHTML = `<strong>${size.label}</strong><br><span class="muted" style="font-size:0.92rem;">${size.note}</span>`;
+        sizeChips.appendChild(chip);
+      });
+    }
+
+    function renderPackages() {
+      const size = state.size;
+      const head = `
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Starting at (${siteData.sizes.find(s => s.id === size).label})</th>
+            <th>Includes</th>
+            <th>Action</th>
+          </tr>
+        </thead>`;
+      const rows = siteData.packages.map(pkg => {
+        const features = pkg.features.map(f => `<li>${f.included ? '✔' : '✕'} ${f.label}</li>`).join('');
+        return `
+          <tr>
+            <td><strong>${pkg.name}</strong><br><span class="muted">${pkg.blurb}</span></td>
+            <td><span class="badge">${currency(pkg.price[size])}</span></td>
+            <td>
+              <ul class="list-check ${pkg.features.some(f => !f.included) ? 'list-x' : ''}" style="display:grid;gap:6px;">
+                ${pkg.features.map(f => `<li style="color:${f.included ? 'var(--muted)' : '#fca5a5'}">${f.label}</li>`).join('')}
+              </ul>
+            </td>
+            <td style="white-space:nowrap;">
+              <a class="btn" href="tel:${siteData.contact.tel}">Call</a>
+              <a class="btn btn-ghost" href="#quote">Quote</a>
+            </td>
+          </tr>`;
+      }).join('');
+      packageTable.innerHTML = head + '<tbody>' + rows + '</tbody>';
+
+      basicPricing.innerHTML = buildSizeList(siteData.packages.find(p => p.id === 'basic').price);
+      fullPricing.innerHTML = buildSizeList(siteData.packages.find(p => p.id === 'full').price);
+    }
+
+    function buildSizeList(prices) {
+      return siteData.sizes.map(size => `
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 8px; border-bottom:1px solid var(--line);">
+          <div>
+            <strong>${size.label}</strong><div class="muted" style="font-size:0.9rem;">${size.note}</div>
+          </div>
+          <div class="badge" style="margin-left:10px;">${currency(prices[size.id])}</div>
+        </div>`).join('');
+    }
+
+    function renderAddOns() {
+      addOns.innerHTML = siteData.addOns.map(add => `
+        <div class="panel">
+          <div class="pill" style="background: var(--accent-soft); color:#fca5a5;">${add.price}</div>
+          <h4 style="margin:10px 0 6px;">${add.name}</h4>
+          <p class="muted">${add.desc}</p>
+          <a class="btn btn-ghost" href="#quote">Add to quote</a>
+        </div>`).join('');
+    }
+
+    function renderGallery() {
+      galleryGrid.innerHTML = siteData.gallery.map(item => `
+        <figure>
+          <a href="${item.link}" target="_blank" rel="noreferrer">
+            <img src="${item.img}" alt="${item.title}" loading="lazy">
+          </a>
+          <figcaption>${item.title}</figcaption>
+        </figure>`).join('');
+    }
+
+    function renderContact() {
+      const contactList = document.getElementById('contactList');
+      contactList.innerHTML = `
+        <li><strong>Phone:</strong> <a href="tel:${siteData.contact.tel}">${siteData.contact.phone}</a></li>
+        <li><strong>Email:</strong> <a href="mailto:${siteData.contact.email}">${siteData.contact.email}</a></li>
+        <li><strong>Address:</strong> ${siteData.contact.address}</li>`;
+
+      const hourList = document.getElementById('hourList');
+      const footerHours = document.getElementById('footerHours');
+      hourList.innerHTML = footerHours.innerHTML = siteData.hours.map(h => `<li>${h}</li>`).join('');
+
+      const vehicleSelects = document.querySelectorAll('select[name="vehicle_size"]');
+      vehicleSelects.forEach(sel => sel.innerHTML = '<option value="">Select size</option>' + siteData.sizes.map(s => `<option>${s.label}</option>`).join(''));
+
+      const serviceSelects = document.querySelectorAll('select[name="service"]');
+      const serviceOptions = siteData.packages.map(p => `<option>${p.name}</option>`).join('') + siteData.addOns.map(a => `<option>${a.name}</option>`).join('');
+      serviceSelects.forEach(sel => sel.innerHTML = '<option value="">Choose a service</option>' + serviceOptions);
+    }
+
+    function renderPlans() {
+      const plans = document.getElementById('plans');
+      plans.innerHTML = siteData.maintenance.map(plan => `
+        <div class="plan">
+          <div class="pill">${plan.price}</div>
+          <h3>${plan.name}</h3>
+          <p class="muted">${plan.note}</p>
+          <ul>
+            ${plan.perks.map(perk => `<li>${perk}</li>`).join('')}
+          </ul>
+          <a class="btn btn-ghost" href="#quote" style="margin-top:12px;">Ask about ${plan.name}</a>
+        </div>`).join('');
+    }
+
+    function renderFAQ() {
+      const faqList = document.getElementById('faqList');
+      faqList.innerHTML = siteData.faq.map(item => `
+        <details>
+          <summary>${item.q}</summary>
+          <p class="muted" style="margin-top:8px;">${item.a}</p>
+        </details>`).join('');
+    }
+
+    // Before/After slider logic
+    const sliderRange = document.getElementById('sliderRange');
+    const sliderOverlay = document.getElementById('sliderOverlay');
+    const sliderHandle = document.getElementById('sliderHandle');
+    function updateSlider() {
+      const val = sliderRange.value;
+      sliderOverlay.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+      sliderHandle.style.left = `${val}%`;
+    }
+    sliderRange.addEventListener('input', updateSlider);
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    renderSizeToggle();
+    renderSizeChips();
+    renderPackages();
+    renderAddOns();
+    renderGallery();
+    renderContact();
+    renderPlans();
+    renderFAQ();
+    updateSlider();
+  </script>
+</body>
+</html>
