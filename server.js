@@ -20,7 +20,7 @@ let quoteRequests = [];
 let appointments = [];
 
 // Email configuration (configure with your email service)
-const transport = nodemailer.createTransporter({
+const transport = nodemailer.createTransport({
   service: 'gmail', // or your email service
   auth: {
     user: process.env.EMAIL_USER || 'your-email@gmail.com',
